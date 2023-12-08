@@ -1,4 +1,4 @@
-import Map from './Map';
+import Map from './Components/Map';
 import { useState } from 'react';
 let apikey = process.env.REACT_APP_API_KEY;
 
