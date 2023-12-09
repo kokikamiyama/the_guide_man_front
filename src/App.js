@@ -4,30 +4,11 @@ import Leaflet from "leaflet";
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import { mapOption, getCurrentPosition } from "./Util/leafletInfo"
 
-// 切り替え前データ
-const tempPlaceData1 = [
-  { id: "1", lat: 33.59513931435894, lng: 130.42419433593753, name: "地点Ａ" },
-  { id: "2", lat: 33.59260123175435, lng: 130.41131973266604, name: "地点Ｂ" },
-  { id: "3", lat: 33.59517506146791, lng: 130.42694091796878, name: "地点Ｃ" },
-  { id: "4", lat: 33.59653344063089, lng: 130.420138835907, name: "地点Ｄ" },
-  { id: "5", lat: 33.592813804823924, lng: 130.42249917984012, name: "地点Ｅ" },
-  { id: "6", lat: 33.590849553725455, lng: 130.4186797142029, name: "地点Ｆ" },
-];
-// 切り替え後データ
-const tempPlaceData2 = [
-  { id: "7", lat: 33.55513931435894, lng: 130.40419433593753, name: "地点Ｇ" },
-  { id: "8", lat: 33.59260123175435, lng: 130.42131973266604, name: "地点Ｈ" },
-  { id: "9", lat: 33.57517506146791, lng: 130.43694091796878, name: "地点Ｉ" },
-  { id: "10", lat: 33.58653344063089, lng: 130.390138835907, name: "地点Ｊ" },
-];
-
 const destinations = [
     {name: "清水寺", lat: 34.9946662, lng: 135.7820861},
     {name: "八坂神社", lat: 35.0036559, lng: 135.760529},
     {name: "先斗町多から", lat: 35.0042777, lng: 135.7685495},
 ]
-
-
 
 // 現在地アイコン
 const currentIcon = Leaflet.icon({
@@ -140,7 +121,13 @@ const App = () => {
         {placeData.length > 0
           ? placeData.map((item) => (
               <Marker key={item.id} position={item} icon={placeIcon}>
-                <Popup>{item.name}</Popup>
+                <Popup>
+                    <div style={{width:"100%", height: "100%"}}>
+                        <li>{item.lat}, {item.lng}</li>
+                        <li>{item.name}</li>
+                    </div>
+                </Popup>
+                {/* <Popup>{item.name}</Popup> */}
               </Marker>
             ))
           : null}
